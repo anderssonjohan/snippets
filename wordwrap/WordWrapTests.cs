@@ -58,11 +58,12 @@ namespace WordWrapSnippet
 		[TestMethod]
 		public void WordWrap_BreaksWordsExceedingLineLimitAndBreaksBetweenWordThatFitsWithinLimit()
 		{
-			var rows = WordWrap( "lorem ipsum testing 12345 abc", 12 );
-			Assert.AreEqual( 3, rows.Count );
-			Assert.AreEqual( "lorem ipsum", rows[0] );
-			Assert.AreEqual( "testing", rows[1]);
-			Assert.AreEqual( "12345 abc", rows[2] );
+			var rows = WordWrap( "lorem ipsum testing7890xyz 12345 abc", 12 );
+			Assert.AreEqual( 4, rows.Count );
+			rows[0].ShouldEqual( "lorem ipsum" );
+			rows[1].ShouldEqual( "testing7890x" );
+			rows[2].ShouldEqual( "yz 12345" );
+			rows[3].ShouldEqual( "abc" );
 		}
 	}
 }
